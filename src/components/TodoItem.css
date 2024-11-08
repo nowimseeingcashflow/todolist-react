@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'NoonnuBasicGothicRegular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noon-2410@1.0/NoonnuBasicGothicRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+.todo-item{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transform: translateY(0);
+    transition: all 0.4s ease;
+    background-color: transparent;
+}
+
+.todo-item .checkbox_col {
+    width: 20px;
+}
+
+.todo-item .title_col{
+    flex : 1;
+
+}
+
+button{
+    border: 0;
+
+}
+input{
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+.color .cyan   {background: #7fccde;}
+
+.btn-gradient.cyan {
+    background: rgba(27,188,194,1);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(27,188,194,1)), to(rgba(24,163,168,1)));
+    background: -webkit-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    background: -moz-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    background: -o-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    background: linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+  }
+
+.btn-gradient.cyan:active   {background: #169499;}
+
+.btn-gradient {
+    margin: 5px;
+}
+.btn-gradient.mini {
+  padding: 4px 12px;  
+  font-size: 12px;
+}
