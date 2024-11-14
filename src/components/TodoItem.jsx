@@ -1,6 +1,9 @@
+import React, {useContext}from "react";
+import { TodoDispatchContext } from "../App";
 import "./TodoItem.css"
 
-const TodoItem = ({id, isDone, content, createdDate, onUpdate, onDelete}) => {
+const TodoItem = ({id, isDone, content, createdDate}) => {
+    const {onUpdate, onDelete} = useContext(TodoDispatchContext);
     const onChangeCB = () => {
         onUpdate(id);
     };
@@ -28,4 +31,4 @@ const TodoItem = ({id, isDone, content, createdDate, onUpdate, onDelete}) => {
     );
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);

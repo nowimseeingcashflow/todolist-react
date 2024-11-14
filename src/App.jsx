@@ -1,10 +1,10 @@
-import FireworkAnimation from "./components/FireworkAnimation";
-import { FireworksOfStars } from "./components/FireworkofStars";
-import Fireworks from "./components/Fireworks";
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
-import { useRef, useReducer } from "react";
+import React , { useRef, useReducer, useCallback } from "react";
+
+export const TodoDispatchContext = React.createContext();
+export const TodoStateContext = React.createContext();
 
 const mockTodo = [
   {
@@ -66,7 +66,7 @@ function App() {
     idRef.current += 1;
   };
 
-  const onUpdate = (targetId) => {
+  const onUpdate = useCallback((targetId) => {
     // setTodo(
     //   todo.map((item) => {
     //     if (item.id === targetId) {
@@ -80,20 +80,25 @@ function App() {
       type: "UPDATE",
       targetId,
     });
-  };
+  }, []);
 
-  const onDelete = (targetId) =>{
+  const onDelete = useCallback((targetId) =>{
     // setTodo(todo.filter((item) => item.id !== targetId));
     dispatch({
       type: "DELETE",
       targetId,
     });
-  }
+  }, []);
+
   return (
     <div className="App mx-auto w-full max-w-[500px] p-5 border border-gray-400 text-center flex flex-col gap-8">
       <Header/>
-      <TodoEditor onCreate={onCreate} />
-      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>
+      <TodoStateContext.Provider value={{todo}}>
+        <TodoDispatchContext.Provider value={{onCreate, onUpdate, onDelete}}> 
+          <TodoEditor />
+          <TodoList />
+        </TodoDispatchContext.Provider>
+      </TodoStateContext.Provider>
     </div>
   );
 }
